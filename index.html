@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Study Material Hub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">📚 Study Material Hub</div>
+  <button class="lang" onclick="toggleLang()">हिंदी / EN</button>
+</header>
+
+<main>
+<section class="hero">
+  <p class="badge">FREE STUDY PLATFORM</p>
+  <h1 id="heroTitle">Learn. Practice. Grow.</h1>
+  <p id="heroText">Lectures, notes and useful study material — all in one place.</p>
+</section>
+
+<section class="courses">
+  <h2 id="courseHeading">Courses</h2>
+  <div class="grid">
+    <button class="card" onclick="openCourse('UPSC')">🏛️<span>UPSC</span><small>Lectures & Notes</small></button>
+    <button class="card" onclick="openCourse('SSC')">📝<span>SSC</span><small>Lectures & Notes</small></button>
+    <button class="card" onclick="openCourse('JEE')">⚙️<span>JEE</span><small>Lectures & Notes</small></button>
+    <button class="card" onclick="openCourse('PW Running')">🎓<span>PW Running</span><small>Study Material</small></button>
+  </div>
+</section>
+
+<section id="coursePanel" class="panel hidden">
+  <button class="back" onclick="closeCourse()">← Back</button>
+  <h2 id="selectedCourse"></h2>
+  <div class="tabs">
+    <button class="active" onclick="showTab('lectures',this)">🎥 Lectures</button>
+    <button onclick="showTab('notes',this)">📄 Notes</button>
+  </div>
+  <div id="content"></div>
+</section>
+</main>
+
+<footer>© 2026 Study Material Hub</footer>
+<script src="script.js"></script>
+</body>
+</html>
