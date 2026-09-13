@@ -1,68 +1,36 @@
-const data = {
-  "UPSC": {
-    lectures: [["UPSC Demo Lecture", "https://drive.google.com/"]],
-    notes: [["UPSC Demo Notes", "https://drive.google.com/"]]
-  },
-  "SSC": {
-    lectures: [["SSC Demo Lecture", "https://drive.google.com/"]],
-    notes: [["SSC Demo Notes", "https://drive.google.com/"]]
-  },
-  "JEE": {
-    lectures: [["JEE Demo Lecture", "https://drive.google.com/"]],
-    notes: [["JEE Demo Notes", "https://drive.google.com/"]]
-  },
-  "PW Running": {
-    lectures: [["Demo Lecture", "https://drive.google.com/"]],
-    notes: [["Demo Notes", "https://drive.google.com/"]]
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDXwY4sImZidjYzCqRoNkzI6vKmVFedEqc",
+  authDomain: "study-material-hub-bf486.firebaseapp.com",
+  projectId: "study-material-hub-bf486",
+  storageBucket: "study-material-hub-bf486.firebasestorage.app",
+  messagingSenderId: "726302304253",
+  appId: "1:726302304253:web:4cef0b17c453a342661b94"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+window.signup = async function(email, password) {
+  try {
+    await createUserWithEmailAndPassword(auth, email, password);
+    alert("Account successfully created ✅");
+  } catch (error) {
+    alert(error.message);
   }
 };
 
-let current = "UPSC";
-
-function openCourse(name) {
-  current = name;
-  document.querySelector(".courses").style.display = "none";
-  document.getElementById("coursePanel").classList.remove("hidden");
-  document.getElementById("selectedCourse").textContent = name;
-  render("lectures");
-}
-
-function closeCourse() {
-  document.querySelector(".courses").style.display = "block";
-  document.getElementById("coursePanel").classList.add("hidden");
-}
-
-function showTab(tab, btn) {
-  document.querySelectorAll(".tabs button").forEach(x => x.classList.remove("active"));
-  btn.classList.add("active");
-  render(tab);
-}
-
-function render(tab) {
-  const box = document.getElementById("content");
-  box.innerHTML = "";
-
-  data[current][tab].forEach(([title, url]) => {
-    const item = document.createElement("div");
-    item.className = "item";
-    item.innerHTML = `
-      <b>${tab === "lectures" ? "🎥" : "📄"} ${title}</b>
-      <a href="${url}" target="_blank">
-        Open ${tab === "lectures" ? "Lecture" : "Notes"}
-      </a>`;
-    box.appendChild(item);
-  });
-}
-
-function toggleLang() {
-  const h = document.getElementById("heroTitle");
-  const t = document.getElementById("heroText");
-
-  if (h.textContent === "Learn. Practice. Grow.") {
-    h.textContent = "सीखो। अभ्यास करो। आगे बढ़ो।";
-    t.textContent = "लेक्चर, नोट्स और उपयोगी स्टडी मटेरियल — एक ही जगह।";
-  } else {
-    h.textContent = "Learn. Practice. Grow.";
-    t.textContent = "Lectures, notes and useful study material — all in one place.";
+window.login = async function(email, password) {
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    alert("Login successful ✅");
+  } catch (error) {
+    alert(error.message);
   }
-}
+};
