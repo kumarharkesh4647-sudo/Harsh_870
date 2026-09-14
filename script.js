@@ -1,4 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -17,20 +18,40 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-window.signup = async function(email, password) {
+// Signup
+window.signup = async function () {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+  const message = document.getElementById("authMessage");
+
+  if (!email || !password) {
+    message.textContent = "Email aur password enter karo.";
+    return;
+  }
+
   try {
     await createUserWithEmailAndPassword(auth, email, password);
-    alert("Account successfully created ✅");
+    message.textContent = "Account successfully created ✅";
   } catch (error) {
-    alert(error.message);
+    message.textContent = error.message;
   }
 };
 
-window.login = async function(email, password) {
+// Login
+window.login = async function () {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+  const message = document.getElementById("authMessage");
+
+  if (!email || !password) {
+    message.textContent = "Email aur password enter karo.";
+    return;
+  }
+
   try {
     await signInWithEmailAndPassword(auth, email, password);
-    alert("Login successful ✅");
+    message.textContent = "Login successful ✅";
   } catch (error) {
-    alert(error.message);
+    message.textContent = error.message;
   }
 };
