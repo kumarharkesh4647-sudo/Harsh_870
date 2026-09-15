@@ -86,6 +86,7 @@ const courseData = {
       { title: "UPSC Introduction", link: "#" },
       { title: "General Studies", link: "#" }
     ],
+    { title: "UPSC Introduction", link: "https://youtu.be/aN2xoBFeUmg?si=gF8y9AvkoO-wXooT" },
     notes: [
       { title: "UPSC Basic Notes", link: "#" },
       { title: "General Studies Notes", link: "#" }
