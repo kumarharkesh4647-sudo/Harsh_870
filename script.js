@@ -57,3 +57,24 @@ window.login = async function () {
     message.textContent = error.message;
   }
 };
+// Login status + Logout
+onAuthStateChanged(auth, (user) => {
+  const status = document.getElementById("userStatus");
+
+  if (user) {
+    status.textContent = "Logged in: " + user.email + " ✅";
+  } else {
+    status.textContent = "Not logged in";
+  }
+});
+
+window.logout = async function () {
+  try {
+    await signOut(auth);
+    document.getElementById("authMessage").textContent =
+      "Logout successful ✅";
+  } catch (error) {
+    document.getElementById("authMessage").textContent =
+      error.message;
+  }
+};
