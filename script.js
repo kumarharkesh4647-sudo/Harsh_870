@@ -287,34 +287,6 @@ window.openSubject = function(subject) {
   `;
 };
 
-
-// Play Video
-window.playVideo = function(video) {
-
-  if (video === "#") {
-    alert("Video link abhi add nahi kiya gaya hai.");
-    return;
-  }
-
-  const content =
-    document.getElementById("content");
-
-  content.innerHTML = `
-    <button class="back-subject"
-      onclick="showSubjects(
-        document.getElementById('selectedCourse').textContent
-      )">
-      ← Back
-    </button>
-
-    <video controls width="100%">
-      <source src="${video}" type="video/mp4">
-      Your browser does not support video playback.
-    </video>
-  `;
-};
-
-
 // Close Course
 window.closeCourse = function() {
   document.getElementById("coursePanel")
