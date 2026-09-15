@@ -83,11 +83,17 @@ window.logout = async function () {
 const courseData = {
   "UPSC": {
     lectures: [
-      { title: "UPSC Introduction", link: "#" },
-      { title: "General Studies", link: "#" }
-    ],
+      "UPSC": {
+  lectures: [
     { title: "UPSC Introduction", link: "https://youtu.be/aN2xoBFeUmg?si=gF8y9AvkoO-wXooT" },
-    notes: [
+    { title: "General Studies", link: "#" }
+  ],
+  notes: [
+    { title: "UPSC Basic Notes", link: "#" },
+    { title: "General Studies Notes", link: "#" }
+  ]
+},
+    
       { title: "UPSC Basic Notes", link: "#" },
       { title: "General Studies Notes", link: "#" }
     ]
