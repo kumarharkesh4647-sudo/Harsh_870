@@ -153,34 +153,19 @@ const courseData = {
   }
 };
 
+// ================= COURSE SYSTEM =================
 
 // Open Course
 window.openCourse = function(course) {
   document.getElementById("coursePanel").classList.remove("hidden");
   document.getElementById("selectedCourse").textContent = course;
 
-  showTab("lectures", document.querySelector(".tabs button"));
+  showSubjects(course);
 };
 
 
-// Close Course
-window.closeCourse = function() {
-  document.getElementById("coursePanel").classList.add("hidden");
-};
-
-
-// Show Lectures / Notes
-window.showTab = function(type, button) {
-
-  document.querySelectorAll(".tabs button").forEach(btn => {
-    btn.classList.remove("active");
-  });
-
-  if (button) {
-    button.classList.add("active");
-  }
-
-  const course = document.getElementById("selectedCourse").textContent;
+// Show Subjects
+function showSubjects(course) {
   const content = document.getElementById("content");
 
   if (!courseData[course]) {
@@ -188,16 +173,153 @@ window.showTab = function(type, button) {
     return;
   }
 
-  const items = courseData[course][type];
+  const subjects = courseData[course].subjects;
 
-  content.innerHTML = items.map(item => `
-    <div class="content-item">
-      <h3>${item.title}</h3>
-      <a href="${item.link}" target="_blank">Open →</a>
+  content.innerHTML = `
+    <h3>Select Subject</h3>
+    <div class="subject-list">
+      ${Object.keys(subjects).map(subject => `
+        <button class="subject-btn"
+          onclick="openSubject('${subject}')">
+          📚 ${subject}
+        </button>
+      `).join("")}
     </div>
-  `).join("");
+  `;
+}
+
+
+// Open Subject
+window.openSubject = function(subject) {
+
+  const course = document.getElementById("selectedCourse").textContent;
+  const items = courseData[course].subjects[subject];
+  const content = document.getElementById("content");
+
+  content.innerHTML = `
+    <button class="back-subject" onclick="showSubjects('${course}')">
+      ← All Subjects
+    </button>
+
+    <h3>📚 ${subject}</h3>
+
+    ${items.map(item => `
+      <div class="content-item">
+        <h4>${item.title}</h4>
+
+        <button class="play-btn"
+          onclick="playVideo('${item.video}')">
+          ▶️ Play Lecture
+        </button>
+
+      </div>
+    `).join("")}
+  `;
 };
 
+
+// Play Video Inside Website
+window.playVideo = function(video) {
+// ================= COURSE SYSTEM =================
+
+// Open Course
+window.openCourse = function(course) {
+  document.getElementById("coursePanel").classList.remove("hidden");
+  document.getElementById("selectedCourse").textContent = course;
+
+  showSubjects(course);
+};
+
+
+// Show Subjects
+function showSubjects(course) {
+  const content = document.getElementById("content");
+
+  const subjects = courseData[course].subjects;
+
+  content.innerHTML = `
+    <h3>Select Subject</h3>
+
+    <div class="subject-list">
+      ${Object.keys(subjects).map(subject => `
+        <button class="subject-btn"
+          onclick="openSubject('${subject}')">
+          📚 ${subject}
+        </button>
+      `).join("")}
+    </div>
+  `;
+}
+
+
+// Open Subject
+window.openSubject = function(subject) {
+
+  const course =
+    document.getElementById("selectedCourse").textContent;
+
+  const items =
+    courseData[course].subjects[subject];
+
+  const content =
+    document.getElementById("content");
+
+  content.innerHTML = `
+    <button class="back-subject"
+      onclick="showSubjects('${course}')">
+      ← All Subjects
+    </button>
+
+    <h3>📚 ${subject}</h3>
+
+    ${items.map(item => `
+      <div class="content-item">
+
+        <h4>${item.title}</h4>
+
+        <button class="play-btn"
+          onclick="playVideo('${item.video}')">
+          ▶️ Play Lecture
+        </button>
+
+      </div>
+    `).join("")}
+  `;
+};
+
+
+// Play Video
+window.playVideo = function(video) {
+
+  if (video === "#") {
+    alert("Video link abhi add nahi kiya gaya hai.");
+    return;
+  }
+
+  const content =
+    document.getElementById("content");
+
+  content.innerHTML = `
+    <button class="back-subject"
+      onclick="showSubjects(
+        document.getElementById('selectedCourse').textContent
+      )">
+      ← Back
+    </button>
+
+    <video controls width="100%">
+      <source src="${video}" type="video/mp4">
+      Your browser does not support video playback.
+    </video>
+  `;
+};
+
+
+// Close Course
+window.closeCourse = function() {
+  document.getElementById("coursePanel")
+    .classList.add("hidden");
+};
 
 // Language
 window.toggleLang = function() {
