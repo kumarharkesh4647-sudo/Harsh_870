@@ -80,7 +80,7 @@ window.logout = async function () {
 };
 // ================= COURSE SYSTEM =================
 
-const const courseData = {
+const courseData = {
   "UPSC": {
     subjects: {
       "History": [
