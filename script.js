@@ -80,49 +80,76 @@ window.logout = async function () {
 };
 // ================= COURSE SYSTEM =================
 
-const courseData = {
+const const courseData = {
   "UPSC": {
-    lectures: [
-      { title: "UPSC Introduction", link: "https://youtu.be/aN2xoBFeUmg?si=gF8y9AvkoO-wXooT" },
-      { title: "General Studies", link: "#" }
-    ],
-    notes: [
-      { title: "UPSC Basic Notes", link: "#" },
-      { title: "General Studies Notes", link: "#" }
-    ]
+    subjects: {
+      "History": [
+        { title: "History Lecture 1", video: "#" },
+        { title: "History Lecture 2", video: "#" }
+      ],
+      "Geography": [
+        { title: "Geography Lecture 1", video: "#" },
+        { title: "Geography Lecture 2", video: "#" }
+      ],
+      "Polity": [
+        { title: "Polity Lecture 1", video: "#" },
+        { title: "Polity Lecture 2", video: "#" }
+      ],
+      "Economy": [
+        { title: "Economy Lecture 1", video: "#" },
+        { title: "Economy Lecture 2", video: "#" }
+      ],
+      "Science": [
+        { title: "Science Lecture 1", video: "#" },
+        { title: "Science Lecture 2", video: "#" }
+      ],
+      "Current Affairs": [
+        { title: "Current Affairs Lecture 1", video: "#" }
+      ]
+    }
   },
 
   "SSC": {
-    lectures: [
-      { title: "SSC Introduction", link: "#" },
-      { title: "SSC Maths", link: "#" }
-    ],
-    notes: [
-      { title: "SSC Maths Notes", link: "#" },
-      { title: "SSC Reasoning Notes", link: "#" }
-    ]
+    subjects: {
+      "Maths": [
+        { title: "Maths Lecture 1", video: "#" },
+        { title: "Maths Lecture 2", video: "#" }
+      ],
+      "Reasoning": [
+        { title: "Reasoning Lecture 1", video: "#" }
+      ],
+      "English": [
+        { title: "English Lecture 1", video: "#" }
+      ],
+      "General Awareness": [
+        { title: "GA Lecture 1", video: "#" }
+      ]
+    }
   },
 
   "JEE": {
-    lectures: [
-      { title: "JEE Physics", link: "#" },
-      { title: "JEE Chemistry", link: "#" }
-    ],
-    notes: [
-      { title: "JEE Physics Notes", link: "#" },
-      { title: "JEE Chemistry Notes", link: "#" }
-    ]
+    subjects: {
+      "Physics": [
+        { title: "Physics Lecture 1", video: "#" }
+      ],
+      "Chemistry": [
+        { title: "Chemistry Lecture 1", video: "#" }
+      ],
+      "Mathematics": [
+        { title: "Maths Lecture 1", video: "#" }
+      ]
+    }
   },
 
   "PW Running": {
-    lectures: [
-      { title: "Running Lecture 1", link: "#" },
-      { title: "Running Lecture 2", link: "#" }
-    ],
-    notes: [
-      { title: "Running Notes 1", link: "#" },
-      { title: "Running Notes 2", link: "#" }
-    ]
+    subjects: {
+      "Subject 1": [
+        { title: "Lecture 1", video: "#" }
+      ],
+      "Subject 2": [
+        { title: "Lecture 1", video: "#" }
+      ]
+    }
   }
 };
 
