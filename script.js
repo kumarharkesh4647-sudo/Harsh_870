@@ -218,81 +218,45 @@ window.openSubject = function(subject) {
 };
 
 
-// Play Video Inside Website
-window.playVideo = function(video) {
-// ================= COURSE SYSTEM =================
-
-// Open Course
-window.openCourse = function(course) {
-  document.getElementById("coursePanel").classList.remove("hidden");
-  document.getElementById("selectedCourse").textContent = course;
-
-  showSubjects(course);
-};
-
-
-// Show Subjects
-function showSubjects(course) {
-  const content = document.getElementById("content");
-
-  const subjects = courseData[course].subjects;
-
-  content.innerHTML = `
-    <h3>Select Subject</h3>
-
-    <div class="subject-list">
-      ${Object.keys(subjects).map(subject => `
-        <button class="subject-btn"
-          onclick="openSubject('${subject}')">
-          📚 ${subject}
-        </button>
-      `).join("")}
-    </div>
-  `;
-}
-
-
-// Open Subject
-window.openSubject = function(subject) {
-
-  const course =
-    document.getElementById("selectedCourse").textContent;
-
-  const items =
-    courseData[course].subjects[subject];
-
-  const content =
-    document.getElementById("content");
-
-  content.innerHTML = `
-    <button class="back-subject"
-      onclick="showSubjects('${course}')">
-      ← All Subjects
-    </button>
-
-    <h3>📚 ${subject}</h3>
-
-    ${items.map(item => `
-      <div class="content-item">
-
-        <h4>${item.title}</h4>
-
-        <button class="play-btn"
-          onclick="playVideo('${item.video}')">
-          ▶️ Play Lecture
-        </button>
-
-      </div>
-    `).join("")}
-  `;
-};
-
 // Close Course
 window.closeCourse = function() {
   document.getElementById("coursePanel")
     .classList.add("hidden");
 };
+// ================= VIDEO PLAYER =================
 
+window.playVideo = function(video) {
+
+  const content = document.getElementById("content");
+
+  if (video === "#") {
+    content.innerHTML = `
+      <p>🎥 Is lecture ka video abhi add nahi kiya gaya hai.</p>
+      <button onclick="showSubjects(
+        document.getElementById('selectedCourse').textContent
+      )">
+        ← Back to Subjects
+      </button>
+    `;
+    return;
+  }
+
+  content.innerHTML = `
+    <button class="back-subject"
+      onclick="showSubjects(
+        document.getElementById('selectedCourse').textContent
+      )">
+      ← Back to Subjects
+    </button>
+
+    <div class="video-player">
+      <video controls width="100%">
+        <source src="${video}" type="video/mp4">
+        Your browser does not support video playback.
+      </video>
+    </div>
+  `;
+};
 // Language
 window.toggleLang = function() {
   const title = document.getElementById("heroTitle");
