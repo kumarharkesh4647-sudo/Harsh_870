@@ -80,61 +80,13 @@ window.logout = async function () {
 };
 // ================= COURSE SYSTEM =================
 
-const const courseData = {
+const courseData = {
   "UPSC": {
     lectures: [
       { title: "UPSC Introduction", link: "https://youtu.be/aN2xoBFeUmg?si=gF8y9AvkoO-wXooT" },
       { title: "General Studies", link: "#" }
     ],
     notes: [
-      { title: "UPSC Basic Notes", link: "#" },
-      { title: "General Studies Notes", link: "#" }
-    ]
-  },
-
-  "SSC": {
-    lectures: [
-      { title: "SSC Introduction", link: "#" },
-      { title: "SSC Maths", link: "#" }
-    ],
-    notes: [
-      { title: "SSC Maths Notes", link: "#" },
-      { title: "SSC Reasoning Notes", link: "#" }
-    ]
-  },
-
-  "JEE": {
-    lectures: [
-      { title: "JEE Physics", link: "#" },
-      { title: "JEE Chemistry", link: "#" }
-    ],
-    notes: [
-      { title: "JEE Physics Notes", link: "#" },
-      { title: "JEE Chemistry Notes", link: "#" }
-    ]
-  },
-
-  "PW Running": {
-    lectures: [
-      { title: "Running Lecture 1", link: "#" },
-      { title: "Running Lecture 2", link: "#" }
-    ],
-    notes: [
-      { title: "Running Notes 1", link: "#" },
-      { title: "Running Notes 2", link: "#" }
-    ]
-  }
-};
-  lectures: [
-    { title: "UPSC Introduction", link: "https://youtu.be/aN2xoBFeUmg?si=gF8y9AvkoO-wXooT" },
-    { title: "General Studies", link: "#" }
-  ],
-  notes: [
-    { title: "UPSC Basic Notes", link: "#" },
-    { title: "General Studies Notes", link: "#" }
-  ]
-},
-    
       { title: "UPSC Basic Notes", link: "#" },
       { title: "General Studies Notes", link: "#" }
     ]
